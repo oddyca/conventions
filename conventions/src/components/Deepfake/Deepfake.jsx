@@ -1,5 +1,7 @@
 import React from 'react';
-import Conventions from '/Frontend/conventions/conventions/src/db/Database'
+import Conventions from '/Frontend/conventions/conventions/src/db/Database';
+
+import './deepfake.css';
 
 export function Deepfake() {
 
@@ -8,23 +10,29 @@ export function Deepfake() {
 
   const getTreatyText = () => {
     const treaty = Conventions["Russian"]["Deepfake"];
-    console.log(treaty)
     return treaty.map((chapter, id) => {
       return (
         <>
           <h1>Chapter {id + 1}</h1>
-          <p>
             {
-              chapter.map((article) => Object.keys(article).map((content) => article[content]))
+              chapter.map((article) => Object.keys(article).map((content) => {
+                return (
+                  <>
+                    <p className='treaty-paragraph'>
+                      {article[content]}
+                    </p>
+                    <br />
+                  </>
+                )}
+               ))
             }
-          </p>
         </>
       )
     })
   }
 
   return (
-    <div>
+    <div className='treaty'>
       {getTreatyText()}
     </div>
   )

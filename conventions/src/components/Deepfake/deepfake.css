@@ -1,0 +1,13 @@
+.treaty {
+    margin-top: 36px;
+}
+
+.treaty-paragraph {
+    font-family: 'Raleway', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    /* max-width: 60ch; */
+}

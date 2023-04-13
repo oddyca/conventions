@@ -1,0 +1,36 @@
+.carousel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 44px;
+}
+
+.treaty-name {
+    font-family: 'Cormorant Garamond', 'Noto Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 65px;
+    text-align: center;
+}
+
+.arrow-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.arrow-button:hover {
+    transform: scale(1.05);
+    /* filter: drop-shadow(0 4px 2px); */
+}
+
+.arrow-button:active {
+    transform: scale(.95);
+}
+
+.left > img {
+    transform: rotate(180deg);
+}
