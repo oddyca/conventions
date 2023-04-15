@@ -16,7 +16,6 @@
 .chapter {
     padding: 6px 10px;
     position: relative;
-    transition: .1s;
 }
 
 .chapter:hover {
@@ -25,12 +24,21 @@
     color: white;
 }
 
-.chapter:hover::before {
+.active {
+    position: relative;
+    display: block;
+    color: white;
+    background-color: black;
+}
+
+.active::before {
     content: '';
     position: absolute;
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
+    background-color: black;
+    color: white;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
     border: 1.5px dashed white;
 }

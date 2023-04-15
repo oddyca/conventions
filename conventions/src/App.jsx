@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route} from 'react-router-dom';
 import './App.css';
 import { Deepfake } from './components/Deepfake/Deepfake';
 import Carousel from './components/Carousel/Carousel';
@@ -16,7 +17,12 @@ function App() {
       </div>
       <Carousel treaty={treaty} setTreaty={setTreaty}/>
       <img className="divider" src={divier} />
-      <Deepfake />
+      <Routes>
+        <Route path="/chapter-1" element={<Deepfake />} />
+        <Route path="/chapter-2" element={<Deepfake />} />
+        <Route path="/" element={<Deepfake />} />
+      </Routes>
+      
     </div>
   )
 }
