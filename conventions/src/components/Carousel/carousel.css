@@ -28,7 +28,7 @@
 }
 
 .arrow-button:active {
-    transform: scale(.95);
+    transform: scale(1);
 }
 
 .left > img {

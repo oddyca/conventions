@@ -2,6 +2,10 @@
     margin-top: 36px;
 }
 
+.treaty > h1 {
+    margin-bottom: 24px;
+}
+
 .treaty-paragraph {
     font-family: 'Raleway', Arial, Helvetica, sans-serif;
     font-style: normal;
