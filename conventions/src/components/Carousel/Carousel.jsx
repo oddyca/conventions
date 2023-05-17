@@ -7,34 +7,38 @@ import './carousel.css';
 
 export default function Carousel() {
   let treatiesNames = allTreaties();
-  const [treaty, setTreaty] = useState(treatiesNames[0]);
+  const [treatyID, setTreaty] = useState(0);
+  const [slideDirection, setSlideDirection] = useState(null);
  
-  const scrollTreaties = (direction) => {
-    console.log("Direction:", direction)
-    if (direction === 'left') {
-      treatiesNames.unshift(treatiesNames.at(-1));
-      console.log("Left...Unshift:", treatiesNames)
-      treatiesNames.pop();
-      console.log("Left...Pop:", treatiesNames)
-      setTreaty(treatiesNames[0])
-    }
-    treatiesNames.push(treatiesNames[0]);
-    console.log("Right...Push:", treatiesNames)
-    treatiesNames.shift();
-    console.log("Right...Shift:", treatiesNames);
-    setTreaty(treatiesNames[0]);
+  const scrollLeft = () => {
+    setTreaty(prev => treatyID === 0 ? treatiesNames.length - 1 : --prev);
+    setSlideDirection('previous');
+    setTimeout(() => {
+      setSlideDirection(null);
+    }, 200);
+  }
+  const scrollRight = () => {
+    setTreaty(prev => treatyID === treatiesNames.length - 1 ? 0 : ++prev);
+    setSlideDirection('next');
+    setTimeout(() => {
+      setSlideDirection(null);
+    }, 200);
   }
 
   return (
     <div className='carousel'>
       <div className='arrow-container'>
-        <button className='arrow-button left' onClick={() => scrollTreaties('left')}>
+        <button className='arrow-button left' onClick={scrollLeft}>
           <img className='arrow-img' src={arrow} />
         </button>
       </div>
-      <h1 className="treaty-name from-right">{treaty}</h1>
+      <h1 
+        className={`treaty-name ${slideDirection === 'next' ? 'from-right' : slideDirection === 'previous' ? 'from-left' : ''}`}
+        >
+          {treatiesNames[treatyID]}
+      </h1>
       <div className='arrow-container'>
-        <button className='arrow-button right' onClick={() => scrollTreaties('right')}>
+        <button className='arrow-button right' onClick={scrollRight}>
           <img className='arrow-img' src={arrow} />
         </button>
       </div>
