@@ -8,14 +8,13 @@ import Logo_of_the_unUnited_Nations from './assets/Logo_of_the_unUnited_Nations.
 import divier from './assets/divider.png';
 
 function App() {
-  const [treaty, setTreaty] = useState('Конвенция О регулировании технологии дипфейк');
 
   return (
     <div className="App">
       <div className="top-dec">
         <img src={Logo_of_the_unUnited_Nations} className='uun-logo'/>
       </div>
-      <Carousel treaty={treaty} setTreaty={setTreaty}/>
+      <Carousel />
       <img className="divider" src={divier} />
       <Routes>
         <Route path="/chapter-1" element={<Deepfake />} />
