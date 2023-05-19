@@ -57,6 +57,7 @@
   display: block;
   color: white;
   background-color: black;
+  pointer-events: none;
 }
 
 .active::before {

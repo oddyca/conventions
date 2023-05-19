@@ -18,12 +18,12 @@ export default function Treaty() {
   };
 
   return (
-    <div>
+    <>
       <Routes>
         <Route path="chapter-:chapterNum" element={<Chapters />} />
       </Routes>
       
       {renderTreatyComponent()}
-    </div>
+    </>
   );
 }
