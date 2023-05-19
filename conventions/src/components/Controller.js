@@ -17,10 +17,16 @@ export function allTreaties() {
   treatiesKeys.map((trt) => {
     switch (trt) {
       case 'Deepfake':
-        treatiesMap.push('Конвенция О регулировании технологии дипфейк');
+        treatiesMap.push({
+          route: 'deepfake',
+          name: 'Конвенция О регулировании технологии дипфейк',
+        });
         break;
       case 'VirtualReality':
-        treatiesMap.push('Конвенция О технологии гиперреальной виртуальной реальности');
+        treatiesMap.push({
+          route: 'virtual-reality',
+          name: 'Конвенция О технологии гиперреальной виртуальной реальности',
+        });
         break;
     }
   });

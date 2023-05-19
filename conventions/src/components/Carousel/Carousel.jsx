@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import {loadTreatyData, allTreaties} from '../Controller';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { allTreaties } from '../Controller';
 
 import arrow from '../../assets/arrow.svg';
 import './carousel.css';
 
 export default function Carousel() {
+  const navigate = useNavigate();
+
   let treatiesNames = allTreaties();
   const [treatyID, setTreaty] = useState(0);
   const [slideDirection, setSlideDirection] = useState(null);
@@ -25,6 +27,10 @@ export default function Carousel() {
     }, 200);
   }
 
+  useEffect(() => {
+    navigate(`${treatiesNames[treatyID].route}`);
+  }, [treatyID])
+
   return (
     <div className='carousel'>
       <div className='arrow-container'>
@@ -35,7 +41,7 @@ export default function Carousel() {
       <h1 
         className={`treaty-name ${slideDirection === 'next' ? 'from-right' : slideDirection === 'previous' ? 'from-left' : ''}`}
         >
-          {treatiesNames[treatyID]}
+          {treatiesNames[treatyID].name}
       </h1>
       <div className='arrow-container'>
         <button className='arrow-button right' onClick={scrollRight}>
