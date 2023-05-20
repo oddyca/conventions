@@ -28,7 +28,7 @@ export default function Carousel() {
   }
 
   useEffect(() => {
-    navigate(`${treatiesNames[treatyID].route}`);
+    navigate(`${treatiesNames[treatyID].route}/chapter-preamble`);
   }, [treatyID])
 
   return (

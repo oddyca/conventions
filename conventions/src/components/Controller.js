@@ -2,10 +2,7 @@ import Conventions from '../db/Database';
 
 export function loadTreatyData(treaty = 'Deepfake', lang = 'Russian') {
   const treatyData = Conventions[treaty][lang];
-
   const treatyChapters = [...Object.keys(treatyData)];
-  // const treatyArticles
-  // const ArticlesParagraphs
 
   return { treatyData, treatyChapters };
 }

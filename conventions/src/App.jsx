@@ -18,7 +18,7 @@ function App() {
         
         <Route path="/:treaty/*" element={<Treaty />} />
         
-        <Route path="/" element={<Navigate replace to="/deepfake" />} />
+        <Route path="/" element={<Navigate replace to="/deepfake/chapter-preamble" />} />
       </Routes>
     </div>
   )
