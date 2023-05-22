@@ -15,8 +15,9 @@ export default function ChapterPicker(props) {
               <NavLink 
                 to={`./chapter-${id === 0 ? 'preamble' : id}`}
                 onClick={() => passChapter(id)}
+                key={`ch-link-${id}`}
               >
-                <div className="chapter" key={id}>
+                <div className="chapter" key={`ch-${id}`}>
                   {id === 0 ? chapterElem : `Глава ${chapterElem}`}
                 </div>
               </NavLink >
@@ -25,6 +26,5 @@ export default function ChapterPicker(props) {
         }
       </div>
     </>
-    
   )
 }

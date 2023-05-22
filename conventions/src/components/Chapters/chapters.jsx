@@ -1,7 +1,8 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { loadTreatyData } from "../Controller";
 
 import './chapters.css';
+import arrow from '../../assets/arrow.svg';
 
 const Chapters = memo((props) => {
 
@@ -12,22 +13,47 @@ const Chapters = memo((props) => {
     return treatyData[treatyKeys[number]]
   }
 
-  const renderChapterContent = (chapter) => {
-    const chapterContent = Object.values(chapterContentObject(chapter));
+  // TODO: bring dropdown logic and render to a separate component
 
-    return chapterContent.map((article) => {
-      return (
-        chapter === 0
-          ? <div className="preamble" dangerouslySetInnerHTML={{__html: article}} />
-          : <p className="article">{article[0]}</p>
-      )
-    });
+  const handleArticleDrop = (e) => {
+    const clickedArticle = e.currentTarget.children[1];
+    clickedArticle.classList.toggle('article-active');
+    e.currentTarget.children[0].children[1].classList.toggle('rotated');
+  }
+
+  const rederArticleContent = (chapter, article) => {
+    const chapterArticles = Object.values(chapterContentObject(chapter))[article];
+    return chapterArticles.map((paragrapgh, id) => <p key={`art-par-${id}`}>{id+1}. {paragrapgh}</p>);
+  }
+
+  const renderChapterContent = (chapter) => {
+    const chapterArticles = Object.keys(chapterContentObject(chapter));
+    const chapterContent = Object.values(chapterContentObject(chapter));
+    if (chapter === 0){
+      return chapterContent.map((article, id) => <p key={`paragprah-${id}`} className="preamble" dangerouslySetInnerHTML={{__html: article}} />);
+    } else {
+      return chapterArticles.map((article, id) => {
+        return(
+          <div key={`article-${id}`} className="article-dropdown" onClick={(e) => handleArticleDrop(e)}>
+            <div className='article-row'>
+              <p>{`Статья ${article.split('').slice(1).join('')}`}</p>
+              <img src={arrow} className="dropdown-arrow" alt='dropdown arrow'/>
+            </div>
+            <div className={`article-cotent`}>
+              {
+                rederArticleContent(chapter, id)
+              }
+            </div>
+          </div>
+        )
+      });
+    }
   }
 
   return (
     <div className="chapter-content">
       {
-        Number.isFinite(props.chapter) && renderChapterContent(props.chapter)
+        renderChapterContent(props.chapter)
       }
     </div>
   )
