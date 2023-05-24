@@ -5,7 +5,6 @@ import Chapters from './Chapters/chapters';
 
 export default function Treaty() {
   const { treaty } = useParams();
-
   const renderTreatyComponent = () => {
     switch (treaty) {
       case 'deepfake':
@@ -20,9 +19,8 @@ export default function Treaty() {
   return (
     <>
       <Routes>
-        <Route path="chapter-:chapterNum" element={<Chapters />} />
+        <Route path="/chapter-:chapterNum" element={<Chapters />} />
       </Routes>
-      
       {renderTreatyComponent()}
     </>
   );

@@ -5,7 +5,6 @@ import './chapters.css';
 import arrow from '../../assets/arrow.svg';
 
 const Chapters = memo((props) => {
-
   const { treatyData } = loadTreatyData(props.whichTreaty);
   const treatyKeys = Object.keys(treatyData);
 
@@ -21,7 +20,7 @@ const Chapters = memo((props) => {
     e.currentTarget.children[0].children[1].classList.toggle('rotated');
   }
 
-  const rederArticleContent = (chapter, article) => {
+  const renderArticleContent = (chapter, article) => {
     const chapterArticles = Object.values(chapterContentObject(chapter))[article];
     return chapterArticles.map((paragrapgh, id) => <p key={`art-par-${id}`}>{id+1}. {paragrapgh}</p>);
   }
@@ -34,14 +33,14 @@ const Chapters = memo((props) => {
     } else {
       return chapterArticles.map((article, id) => {
         return(
-          <div key={`article-${id}`} className="article-dropdown" onClick={(e) => handleArticleDrop(e)}>
+          <div key={`article-${chapter}-${id}`} className="article-dropdown" onClick={handleArticleDrop}>
             <div className='article-row'>
               <p>{`Статья ${article.split('').slice(1).join('')}`}</p>
               <img src={arrow} className="dropdown-arrow" alt='dropdown arrow'/>
             </div>
             <div className={`article-cotent`}>
               {
-                rederArticleContent(chapter, id)
+                renderArticleContent(chapter, id)
               }
             </div>
           </div>

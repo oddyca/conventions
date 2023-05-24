@@ -5,6 +5,7 @@
   align-items: flex-start;
   text-align: left;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .preamble {
@@ -29,21 +30,31 @@
   flex-direction: column;
   align-items: flex-start;
   gap: .5rem;
+  width: 100%;
+  max-width: calc(100% - 3rem);
 }
 
 .article-row {
+  min-width: fit-content;
+  width: 18%;
+  padding: 0 .5rem 0 .5rem;
   display: flex;
-  justify-content: flex-start;
-  gap: 1.5rem;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.article-row > p {
+  display: block;
+  min-width: 7rem;
 }
 
 .dropdown-arrow {
   transition: .2s;
-  transform: scale(.7) rotate(90deg);
+  transform: scale(.5) rotate(90deg);
 }
 
 .rotated {
-  transform: scale(.7) rotate(-90deg);
+  transform: scale(.5) rotate(-90deg);
 }
 
 .article-cotent {
