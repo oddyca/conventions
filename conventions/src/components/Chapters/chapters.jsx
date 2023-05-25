@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
 import { loadTreatyData } from "../Controller";
+// import { useParams } from "react-router-dom";
 
 import './chapters.css';
 import arrow from '../../assets/arrow.svg';
@@ -22,7 +23,13 @@ const Chapters = memo((props) => {
 
   const renderArticleContent = (chapter, article) => {
     const chapterArticles = Object.values(chapterContentObject(chapter))[article];
-    return chapterArticles.map((paragrapgh, id) => <p key={`art-par-${id}`}>{id+1}. {paragrapgh}</p>);
+    return chapterArticles.map((paragrapgh, id) => {
+      const regTest = /^[a-z]\)/.test(paragrapgh)
+      if (regTest) {
+        return <p key={`art-par-${id}`}>{paragrapgh}</p>
+      }
+      return <p key={`art-par-${id}`}>{id+1}. {paragrapgh}</p>
+    });
   }
 
   const renderChapterContent = (chapter) => {
