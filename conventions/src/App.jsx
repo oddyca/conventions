@@ -4,7 +4,8 @@ import Treaty from './components/Treaty';
 import Carousel from './components/Carousel/Carousel';
 
 import Logo_of_the_unUnited_Nations from './assets/Logo_of_the_unUnited_Nations.svg';
-import divier from './assets/divider.png';
+import divider from './assets/divider.png';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,11 +14,12 @@ function App() {
         <img src={Logo_of_the_unUnited_Nations} className='uun-logo'/>
       </div>
       <Carousel />
-      <img className="divider" src={divier} />
+      <img className="divider" src={divider} />
       <Routes>
         <Route path="/:treaty/*" element={<Treaty />} />
         <Route path="/" element={<Navigate replace to="/deepfake/chapter-preamble" />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
