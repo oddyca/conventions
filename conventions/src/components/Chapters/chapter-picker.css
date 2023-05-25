@@ -1,0 +1,73 @@
+.chapter-picker {
+  width: 100%;
+  height: fit-content;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  border-top: 2px solid black;
+  border-bottom: 2px dashed grey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: .5rem 0 .5rem 0;
+}
+
+.chapter {
+  padding: 6px 10px;
+  position: relative;
+  -webkit-animation: fade-in-fwd 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in-fwd 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.chapter:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.active {
+  position: relative;
+  display: block;
+  color: white;
+  background-color: black;
+  pointer-events: none;
+}
+
+.active::before {
+  content: '';
+  position: absolute;
+  background-color: black;
+  color: white;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  border: 1.5px dashed white;
+}

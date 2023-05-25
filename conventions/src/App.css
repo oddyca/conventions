@@ -1,0 +1,25 @@
+#root {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+  text-align: left;
+  font-size: 11px;
+  color: grey;
+  margin-top: 5rem;
+}
+
+.git-link {
+  color:#535bf2;
+}
+
+.git-link:hover {
+  color: #3339a3;
+}
