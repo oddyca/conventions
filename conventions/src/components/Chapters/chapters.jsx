@@ -1,9 +1,8 @@
 import { memo, useState } from "react";
 import { loadTreatyData } from "../Controller";
-// import { useParams } from "react-router-dom";
+import Accordion from "../Accordion/Accordion"
 
 import './chapters.css';
-import arrow from '../../assets/arrow.svg';
 
 const Chapters = memo((props) => {
   const { treatyData } = loadTreatyData(props.whichTreaty);
@@ -11,25 +10,6 @@ const Chapters = memo((props) => {
 
   const chapterContentObject = (number) => {
     return treatyData[treatyKeys[number]]
-  }
-
-  // TODO: bring dropdown logic and render to a separate component
-
-  const handleArticleDrop = (e) => {
-    const clickedArticle = e.currentTarget.nextSibling;
-    clickedArticle.classList.toggle('article-active');
-    e.currentTarget.children[1].classList.toggle('rotated');
-  }
-
-  const renderArticleContent = (chapter, article) => {
-    const chapterArticles = Object.values(chapterContentObject(chapter))[article];
-    return chapterArticles.map((paragrapgh, id) => {
-      const regTest = /^[a-z]\)/.test(paragrapgh)
-      if (regTest) {
-        return <p key={`art-par-${id}`}>{paragrapgh}</p>
-      }
-      return <p key={`art-par-${id}`}>{id+1}. {paragrapgh}</p>
-    });
   }
 
   const renderChapterContent = (chapter) => {
@@ -40,17 +20,7 @@ const Chapters = memo((props) => {
     } else {
       return chapterArticles.map((article, id) => {
         return(
-          <div key={`article-${chapter}-${id}`} className="article-dropdown">
-            <div className='article-row' onClick={handleArticleDrop}>
-              <p>{`Статья ${article.split('').slice(1).join('')}`}</p>
-              <img src={arrow} className="dropdown-arrow" alt='dropdown arrow'/>
-            </div>
-            <div className={`article-cotent`}>
-              {
-                renderArticleContent(chapter, id)
-              }
-            </div>
-          </div>
+          <Accordion key={`article-${chapter}-${id}`} chapterID={chapter} articleName={article} articleIndex={id} chapterContentObject={chapterContentObject}/>
         )
       });
     }
