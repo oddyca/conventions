@@ -16,9 +16,9 @@ const Chapters = memo((props) => {
   // TODO: bring dropdown logic and render to a separate component
 
   const handleArticleDrop = (e) => {
-    const clickedArticle = e.currentTarget.children[1];
+    const clickedArticle = e.currentTarget.nextSibling;
     clickedArticle.classList.toggle('article-active');
-    e.currentTarget.children[0].children[1].classList.toggle('rotated');
+    e.currentTarget.children[1].classList.toggle('rotated');
   }
 
   const renderArticleContent = (chapter, article) => {
@@ -40,8 +40,8 @@ const Chapters = memo((props) => {
     } else {
       return chapterArticles.map((article, id) => {
         return(
-          <div key={`article-${chapter}-${id}`} className="article-dropdown" onClick={handleArticleDrop}>
-            <div className='article-row'>
+          <div key={`article-${chapter}-${id}`} className="article-dropdown">
+            <div className='article-row' onClick={handleArticleDrop}>
               <p>{`Статья ${article.split('').slice(1).join('')}`}</p>
               <img src={arrow} className="dropdown-arrow" alt='dropdown arrow'/>
             </div>
